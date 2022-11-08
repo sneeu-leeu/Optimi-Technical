@@ -50,7 +50,7 @@ const ProjectList = ({ groups, searchTerm, project } ) => {
     return (
         <div className={'container d-flex'}>
             <div className={"container project-img-div d-flex"}>
-                <Picture link={project.image.link}/>
+                <Picture link={project.image.link} key={project.image.id}/>
             </div>
             <div className={'container project-info'}>
                 <div className={'project-details'}>
