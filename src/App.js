@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React, {useEffect, useState} from "react";
 import './App.css';
+import Navigation from "./components/Navigation";
 
-function App() {
+const App = () => {
+
+  const [backendData, setBackendData] = useState([{}]);
+
+  // console.log(backendData);
+
+  useEffect(()=> {
+     fetch("/api").then(
+         response => response.json()
+     ).then(
+         data => {
+             setBackendData(data)
+         }
+     )
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        { backendData.empty ? <h1>Loading...</h1> :
+         <Navigation
+            data={backendData}
+         /> }
     </div>
   );
 }

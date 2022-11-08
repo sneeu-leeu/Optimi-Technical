@@ -1,3 +1,9 @@
+# Optimi Technical Project
+
+### Welcome to the Optimi technical. To use this app you will need to install [Node](https://nodejs.org/en/download/) and [express.js](https://expressjs.com/) to run this project locally.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
