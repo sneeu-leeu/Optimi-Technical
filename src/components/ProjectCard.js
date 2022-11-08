@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Picture from "./Picture";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import ProjectList from "./ProjectList";
 
 const ProjectCard = ({ backEndData }) => {
 
@@ -18,28 +19,28 @@ const ProjectCard = ({ backEndData }) => {
                             <ul className={'list'}>
                                 <NavDropdown.Item className={'.nav-item'}>
                                     <li className={'list-item'} key={project.id}>
-                                        {project.name}
+                                       <ProjectList backEndData={backEndData} />
                                     </li>
                                 </NavDropdown.Item>
-                                {project.groups.map(function (item) {
-                                    return (
-                                        <NavDropdown.Item href={'#'} className={'nav-item'}>
-                                            <li className={'list-item'} key={item.id}>
-                                                {item.name}
-                                            </li>
-                                        </NavDropdown.Item>
-                                    )
-                                })}
+                                {/*{project.groups.map(function (item) {*/}
+                                {/*    return (*/}
+                                {/*        <NavDropdown.Item href={'#'} className={'nav-item'}>*/}
+                                {/*            <li className={'list-item'} key={item.id}>*/}
+                                {/*                {item.name}*/}
+                                {/*            </li>*/}
+                                {/*        </NavDropdown.Item>*/}
+                                {/*    )*/}
+                                {/*})}*/}
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        )
+        );
 
-    });
-
+    })
     return card
+
 }
 
 export default ProjectCard;
