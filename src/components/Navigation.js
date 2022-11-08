@@ -5,7 +5,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Search from './Searchbar';
 import "./Navigation.css";
-import ProjectList from "./ProjectList";
 import ProjectCard from "./ProjectCard";
 
 const Navigation = (props) => {
@@ -23,8 +22,7 @@ const Navigation = (props) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#funFacts">Fun Facts</Nav.Link>
-                        <Nav.Link href="#link">Link</Nav.Link>
+                        <Nav.Link href="#">Home</Nav.Link>
                         <NavDropdown
                             title="Projects"
                             id="basic-nav-dropdown">
@@ -34,6 +32,7 @@ const Navigation = (props) => {
                                 searchTerm={filterTerm}
                             />
                         </NavDropdown>
+                        <Nav.Link href="#">Products</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
