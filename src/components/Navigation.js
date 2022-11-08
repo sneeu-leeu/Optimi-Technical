@@ -29,10 +29,10 @@ const Navigation = (props) => {
                             title="Projects"
                             id="basic-nav-dropdown">
                             <Search searchTerm={searchTerm}/>
-                            <ProjectCard backEndData={props}/>
-                            {/*<ProjectList*/}
-                            {/*    backEndData={props}*/}
-                            {/*    searchTerm={filterTerm} />*/}
+                            <ProjectCard
+                                backEndData={props}
+                                searchTerm={filterTerm}
+                            />
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

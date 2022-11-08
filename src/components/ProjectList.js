@@ -1,20 +1,19 @@
 import React, {useState} from "react";
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
 import './ProjectList.css'
-import Picture from "./Picture";
 
-const ProjectList = ({backEndData, searchTerm} ) => {
 
-    const elList = backEndData.data.map(m=>{
-        const temp = [...m.groups];
-        temp.forEach(cur => cur.groupName = m.name );
-        temp.push({id:m.id,name:m.name});
-        return temp;
-    });
+const ProjectList = ({groups, searchTerm, project} ) => {
 
-    console.log(elList);
-
+    // const elList = backEndData.data.map(m=>{
+    //     const temp = [...m.groups];
+    //     temp.forEach(cur => cur.groupName = m.name );
+    //     temp.push({id:m.id,name:m.name});
+    //     return temp;
+    // });
+    //
+    // console.log(elList);
+    //
     // const [ filteredList, setFilteredList ] = useState(elList);
     //
     // const filter = filteredList.filter(name=> {
@@ -81,8 +80,41 @@ const ProjectList = ({backEndData, searchTerm} ) => {
     //    );
     // })
     // if
-    return <h1>elements</h1>
-    // return <h1>fun</h1>
+    // const listItems = filteredList.map((list) => {
+        return (
+            <div className={'project-details'}>
+                <ul className={'list'}>
+
+                    {groups.map(groupItem=>{
+                        return (
+                            <NavDropdown.Item className={'.nav-item'}>
+                                <li className={'list-item'} key={groupItem.id}>
+                                    {groupItem.name}
+                                </li>
+                            </NavDropdown.Item>
+                        )
+
+                    })}
+                    {/*<NavDropdown.Item className={'.nav-item'}>*/}
+                    {/*    <li className={'list-item'} key={elList.id}>*/}
+                    {/*        {elList.name}*/}
+                    {/*    </li>*/}
+                    {/*</NavDropdown.Item>*/}
+                    {/*{project.groups.map(function(item){*/}
+                    {/*    return (*/}
+                    {/*        <NavDropdown.Item  href={'#'} className={'nav-item'}>*/}
+                    {/*            <li className={'list-item'} key={item.id} >*/}
+                    {/*                {item.name}*/}
+                    {/*            </li>*/}
+                    {/*        </NavDropdown.Item>*/}
+                    {/*    )*/}
+                    {/*})}*/}
+                </ul>
+            </div>
+        );
+
+    // })
+   // return listItems
 }
 
 export default ProjectList;
