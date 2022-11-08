@@ -1,120 +1,50 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './ProjectList.css'
 
 
-const ProjectList = ({groups, searchTerm, project} ) => {
+const ProjectList = ({ groups, searchTerm, project } ) => {
 
-    // const elList = backEndData.data.map(m=>{
-    //     const temp = [...m.groups];
-    //     temp.forEach(cur => cur.groupName = m.name );
-    //     temp.push({id:m.id,name:m.name});
-    //     return temp;
-    // });
-    //
-    // console.log(elList);
-    //
-    // const [ filteredList, setFilteredList ] = useState(elList);
-    //
-    // const filter = filteredList.filter(name=> {
-    //     if (searchTerm === "") {
-    //         return true;
-    //     } else {
-    //         return name.name.toLowerCase().includes(searchTerm.toLowerCase());
-    //     }
-    //     setFilteredList(filter);
-    // });
+    const [groupList, setGroupList] = useState(groups);
+
+    useEffect( ()=> {
+        const group = groups.filter(cur => {
+                if (searchTerm === '') {
+                    return true
+                } else {
+                    return cur.name.toLowerCase().includes(searchTerm.toLowerCase())
+                }
+            }
+        )
+        setGroupList(group);
+    },[searchTerm])
 
 
-    // const listItems = filteredList.map((list) => {
-    //     return (
-    //         <ul className={'list'}>
-    //             <NavDropdown.Item className={'.nav-item'}>
-    //                 <li className={'list-item'} key={list.id}>
-    //                     {list[5].name}
-    //                 </li>
-    //             </NavDropdown.Item>
-    //             {/*{list.groups.map(function(item){*/}
-    //             {/*    return (*/}
-    //             {/*        <NavDropdown.Item  href={'#'} className={'nav-item'}>*/}
-    //             {/*            <li className={'list-item'} key={item.id} >*/}
-    //             {/*                {item.name}*/}
-    //             {/*            </li>*/}
-    //             {/*        </NavDropdown.Item>*/}
-    //             {/*    )*/}
-    //             {/*})}*/}
-    //         </ul>
-    //     );
-    // })
+    if (groupList.length === 0 ) {
+        return <></>
+    }
 
-    // const renderedList = data.map((project) => {
-    //    return (
-    //        <div>
-    //             <div className={'container d-flex'}>
-    //                 <div className={"container project-img-div d-flex"}>
-    //                     <Picture link={project.image.link}/>
-    //                 </div>
-    //                 <div className={'container project-info'}>
-    //                     <div className={'project-details'}>
-    //                         <ul className={'list'}>
-    //                             <NavDropdown.Item className={'.nav-item'}>
-    //                                 <li className={'list-item'} key={project.id}>
-    //                                     {project.name}
-    //                                 </li>
-    //                             </NavDropdown.Item>
-    //                             {project.groups.map(function(item){
-    //                                 return (
-    //                                     <NavDropdown.Item  href={'#'} className={'nav-item'}>
-    //                                         <li className={'list-item'} key={item.id} >
-    //                                             {item.name}
-    //                                         </li>
-    //                                     </NavDropdown.Item>
-    //                                 )
-    //                             })}
-    //                         </ul>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //        </div>
-    //
-    //    );
-    // })
-    // if
-    // const listItems = filteredList.map((list) => {
-        return (
-            <div className={'project-details'}>
-                <ul className={'list'}>
+    return (
+        <div className={'project-details'}>
+            <ul className={'list'}>
+                <NavDropdown.Item className={'.nav-item'}>
+                    <li className={'list-item'} key={project.id}>
+                        {project.name}
+                    </li>
+                </NavDropdown.Item>
 
-                    {groups.map(groupItem=>{
-                        return (
-                            <NavDropdown.Item className={'.nav-item'}>
-                                <li className={'list-item'} key={groupItem.id}>
-                                    {groupItem.name}
-                                </li>
-                            </NavDropdown.Item>
-                        )
-
-                    })}
-                    {/*<NavDropdown.Item className={'.nav-item'}>*/}
-                    {/*    <li className={'list-item'} key={elList.id}>*/}
-                    {/*        {elList.name}*/}
-                    {/*    </li>*/}
-                    {/*</NavDropdown.Item>*/}
-                    {/*{project.groups.map(function(item){*/}
-                    {/*    return (*/}
-                    {/*        <NavDropdown.Item  href={'#'} className={'nav-item'}>*/}
-                    {/*            <li className={'list-item'} key={item.id} >*/}
-                    {/*                {item.name}*/}
-                    {/*            </li>*/}
-                    {/*        </NavDropdown.Item>*/}
-                    {/*    )*/}
-                    {/*})}*/}
-                </ul>
-            </div>
-        );
-
-    // })
-   // return listItems
+                {groupList.map(groupItem=>{
+                    return (
+                        <NavDropdown.Item className={'.nav-item'}>
+                            <li className={'list-item'} key={groupItem.id}>
+                                {groupItem.name}
+                            </li>
+                        </NavDropdown.Item>
+                    )
+                })}
+            </ul>
+        </div>
+    );
 }
 
 export default ProjectList;
